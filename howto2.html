@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Tera Schaller </title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+<h1 class="bg-primary"> CS290 How To Project </h1>
+<h1 class="bg-primary"> Getting Started with the Facebook Graph API </h1>
+<h2 class="bg-info"> API's for Absolute Beginners </h2>
+<p> By Terezie Schaller </p>
+  </div>
+
+  <div class="container">
+
+<p> Web development is a lot like playing with Legos, except
+  sometimes it can be a little tricky to understand exactly
+  how the pieces fit together. For someone who is completely
+  new to web development, the concept of an API can be
+  difficult to understand, and it can be hard to visualize
+  how they can be useful. However, API’s are like a whole new
+  section of the internet that you never knew existed. Once
+  you understand what they are and how they work, you see how
+  they are a versatile and nearly indispensable piece in the
+  web development.
+</p>
+<br>
+
+<p class="bg-info"> So what exactly is an API? </p>
+<p> API stands for application programming interface - which
+  doesn't really tell you a whole lot, if you are new to web
+  development. Basically, it is a way for programs to communicate
+   with each other. Everyone is familiar with the idea of
+   accessing a website. This is a human interacting with a web
+   app. You open your browser, type in a web address, maybe
+   login, and then click on the links leading to the information
+   you are interested in. This is called the user interface.
+   The application programming interface is very similar except
+   that it describes a series of steps for a web app to follow
+   to access information from another web app.    </p>
+   <br>
+
+<p class="bg-info">A few basic examples. </p>
+<p> Let’s say you wanted to build a vacation planning app. As a
+  feature of the app, you wanted to provide the user with
+  information about the weather at their destination. You don’t
+  have to build a whole system that collects weather data!
+  Instead, you can grab that information from an API. If you
+  wanted your vacation planning app to suggest places nearby for
+  dinner, you would not have to devise a system of rating
+  restaurants and collecting comments. Once again, if someone has
+  already built that, you don’t have to redesign the wheel. They
+  probably have an API, and you can just pull the relevant bits
+  of data you need from that. Then you can, for example,
+  compare the restaurant data from the API to the user preferences
+  stored in your app and suggest the perfect place to have dinner!
+<br><br>
+  There are API’s for almost anything that someone has already
+  built. Youtube provides an API to embed video. Google Maps
+  allows you to access their map and route information so that
+  you can include geographically relevant information in your app.
+  An enormous, searchable list of available API’s can be found
+  at programmableweb.com under the “API Directory” tab.
+<br><br>
+“Wow! This is so cool!” you say to yourself, but then you wonder,
+ “If I am a big company like Facebook or Google, why would I let
+ people access my app?” Why do established web apps provide
+ portals into their data for other developers to use? Some API’s
+ do charge money for access, but many do not. Why provide free
+ data? One major motivation, is that it allows API developers to
+ push their ads and content onto other sites. If you embed a
+ Youtube video into your site, your users will watch one of
+ Youtube’s ads before they get to watch the video.
+   </p>
+<br>
+
+<p class="bg-info"> Security and privacy. </p>
+<p>  API’s allow access to data while protecting the integrity of the data and user privacy (ideally). An API is a lot like an ATM. The bank cannot just let people stroll into the vault and grab their money. They might take money that doesn’t belong to them or knock over a giant stack of money and get everyone’s money all mixed up. Instead, the bank’s ATM provides a highly controlled and secure method of accessing your money. The ATM makes sure you only access your own money. You can’t take other’s money or somehow screw with their accounts. Ideally, a well written API ensures that you only have access to the data the owner intends you to access, and keeps you from changing anything you are not supposed to have access to.
+  </p>
+
+<h2 class="bg-info"> The Facebook Social Graph and Graph API </h2>
+<p>  So now that our inquisitive beginner programmer has realized there are these cool things called API’s out there, she wants to go out into the wild internet and find an API to play with. One of the first places that jumps to mind that might have interesting data is Facebook.
+<br><br>
+Facebook does, in fact, have a large API system, and there are lots of way you can integrate Facebook functionality into your programming projects. The Facebook Graph API is perhaps the most important because allows you to both pull data out by getting information on your user such as their likes and photos. It also has methods for posting comments, photos, and video to Facebook through your web application.
+<br><br>
+<p class="bg-info"> Facebook is a social graph. </p>
+In order to access the Facebook API, we first need to understand how data in Facebook is represented. Facebook is built on the mathematical concept of a graph where objects in Facebook correspond to nodes, and connections between those objects are the edges (or vertices) of the graph. Examples of objects/nodes are things like users, timeline posts, comments, and photos. Examples of edges are things like friendships, who you are in a relationship with, or likes. Each user has access to a unique view of a small portion of the larger Facebook social graph. Mathematically speaking, the Facebook graph is nearly completely connected. It is estimated that 99.91% of nodes are part of a single connected graph structure.
+<br><br>
+The Facebook Graph API is a RESTful JSON API. REST stands for Representation State Transfer, which is not super relevant information to the newbie programmer. What you need to know about REST is this means it can be accessed by the browser with a well formatted URL query string. A JSON API means that it returns information as JSON - JavaScript Object Notation. This format is easy to work with in a JavaScript program.
+  </p>
+<br>
+
+<p class="bg-info"> Working with the Graph API in the browser. </p>
+<p> Your basic browser (Chrome, Firefox, Safari, etc) turns out to be a powerful tool. From the browser window, we can make queries of the Facebook graph and receive the data. This is basically what is going on when you are logged onto Facebook and browsing your news feed, but here we can see it broken down into it’s component parts.   </p>
+<br>
+
+<p class="bg-info">Formatting the URL </p>
+<p> A sample query of the Facebook Graph looks like this:
+<br>
+<pre>https://graph.facebook.com/v2.8/me?fields=likes&access_token=EAACEdEose0NZBfOkTY….</pre>
+
+https://graph.facebook.com/v2.8 is the API url and the current version you are using. The version is important because different capabilities are added and some capabilities are gradually phased out. You want to work with the most recent version so your app will remain relevant for as long as possible. ‘/me’ is you, the user. This can also be the numerical Facebook ID number, if you know it. ‘fields=‘ is followed by the names of fields you want to access. The example above accesses the user’s likes. Access tokens will be discussed in greater detail in a later section.
+
+You can request multiple fields in a single request by separating them with commas like so:
+<br>
+<pre>…/me?fields=likes,posts&access_token=EAACEd….</pre>
+
+You can access nested data fields, as well, using curly braces { }. For example, if you wanted to access the users posts and the comments and reactions (LIKE, HAHA, MAD, etc.) to the posts you can format your query like this:
+<br>
+<pre>…/me?fields=posts{comments,reactions}&access_token=EAACEd….</pre>
+
+This will give you a brief summary of each post, plus some information on who commented, what they said, and who ‘reacted’ and what their reaction was. The original ‘reaction’ was a simple LIKE, but Facebook has added several more such as LOVE, SAD, ANGRY, HAHA, and WOW. These are all visible in the data that is returned by the browser.
+
+Additionally, you can add modifiers to modify the data you are requesting using dot notation in the format: field.modifier(param). One of the most useful modifiers is the limit modifier. You can use the limit modifier to specify the number of objects you want the API to return. For example:
+<br>
+<pre>…/me?fields=posts.limit(3){reactions,comments},likes.limit(5)..</pre>
+
+This URL will give you your three most recent posts, along with associated reactions and comments, and your five most recent likes.
+<br><br>
+You can try accessing friends, but that is likely to be a little disappointing. Older versions of the Graph API supported accessing friends and friends-of-friends. However, due to privacy and security concerns, this function was deprecated (fancy word for phased out). Currently, you can enter friends in the field data, and the browser will return your total number of friends and any friends who have tried to use the graph API tool, which will probably not be too many people.
+<br><br>
+Lets paste an example URL along with a valid access token into a browser to see what data we can get back.
+
+   </p>
+<br>
+
+<img src="SS01_browser_ex.png" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+<br>
+<img src="SS01_browser_ex.png" alt="browser example" style="width:304px;height:228px;">
+
+<p class="bg-info"> </p>
+<p>    </p>
+<br>
+
+<p class="bg-info"> </p>
+<p>    </p>
+<br>
+
+<p class="bg-info"> </p>
+<p>    </p>
+<br>
+
+<p class="bg-info"> </p>
+<p>    </p>
+<br>
